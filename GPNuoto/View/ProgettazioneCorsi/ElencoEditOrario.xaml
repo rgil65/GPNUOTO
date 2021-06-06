@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="GPNuoto.ElencoEditOrario"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:GPNuoto"
+             xmlns:vm="clr-namespace:GPNuoto.ViewModel"
+             xmlns:cnv="clr-namespace:GPNuoto.Converters"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:CorsoEditViewModel,IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <cnv:TimeSpanToStringConverter x:Key="TimeSpanToStr"/>
+        <cnv:DayWeekToStringConverter x:Key="DayWeekToStr"/>
+    </UserControl.Resources>
+    <Grid  VerticalAlignment="Stretch" Background="{StaticResource HighlightBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource HeaderCalendario}" >Orari Attività</TextBlock>
+        <ListBox x:Name="listBox" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ItemsSource="{Binding EditElencoOrari}" SelectionMode="Single" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border x:Name="Border" Height="40" Padding="8" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Background="AliceBlue">
+
+
+                        <Grid Background="{Binding TipoAttivita.BackgroundColor}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button VerticalAlignment="Center" ToolTip="Cancellazione orario" Style="{StaticResource MaterialDesignFlatButton}" CommandParameter="{Binding Mode=OneWay}" Command="{Binding DataContext.RemoveOrario, ElementName=listBox, Mode=OneWay}">
+                                <materialDesign:PackIcon Kind="MinusCircleOutline" Height="24" Width="24"/>
+                            </Button>
+                            <TextBlock Grid.Column="1" Text="{Binding GiornoSettimana, Converter={StaticResource DayWeekToStr}}" Height="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock  Text="{Binding OraInizio,Converter={StaticResource TimeSpanToStr}}" Height="20" HorizontalAlignment="Center"/>
+                                <TextBlock><Span xml:space="preserve"> - </Span></TextBlock>
+                                <TextBlock  Text="{Binding OraFine,Converter={StaticResource TimeSpanToStr}}" Height="20" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

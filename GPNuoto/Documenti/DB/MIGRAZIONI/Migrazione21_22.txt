@@ -1,0 +1,35 @@
+SET SQL_SAFE_UPDATES = 0;
+
+
+CREATE TABLE `codicicontabilidettagli` (
+  `idCodiciContabiliDettagli` INT NOT NULL AUTO_INCREMENT,
+  `CodiceContabile` CHAR(6) NULL,
+  `Descrizione` VARCHAR(45) NULL,
+  `Importo` DECIMAL(12,2) NULL DEFAULT 0,
+  PRIMARY KEY (`idCodiciContabiliDettagli`),
+  UNIQUE INDEX `idCodiciContabiliDettagli_UNIQUE` (`idCodiciContabiliDettagli` ASC),
+  INDEX `FK_CODICECONTABILE_idx` (`CodiceContabile` ASC),
+  UNIQUE INDEX `FK_CHIAVEUNIVOCA` (`CodiceContabile` ASC, `Descrizione` ASC),
+  CONSTRAINT `FK_CODICECONTABILE`
+    FOREIGN KEY (`CodiceContabile`)
+    REFERENCES `mysqldbschema`.`codicicontabili` (`Codice`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+
+CREATE TABLE `movimentidettagli` (
+  `idMovimentiDettagli` INT NOT NULL AUTO_INCREMENT,
+  `idMovimenti` INT NOT NULL,
+  `Codice` VARCHAR(45) NOT NULL,
+  `ImportoUnitario` VARCHAR(45) NOT NULL,
+  `Quantita` INT NOT NULL,
+  PRIMARY KEY (`idMovimentiDettagli`));
+
+
+
+
+
+
+UPDATE `versionedb` SET `Versione`='2.2' WHERE `Versione`='2.1';

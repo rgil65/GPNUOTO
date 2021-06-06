@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="GPNuoto.StampaRicevutaView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        xmlns:report="clr-namespace:GPNuoto.Report"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Pagamenti.CurrentPagamento, Source={StaticResource Locator}}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <cnv:DateTimeToTimeStrConverter x:Key="DateTimeToTimeStr" />
+        <cnv:DateToStringConverter x:Key="DateToString" />
+        <cnv:NotZeroToVisibilityConverter x:Key="NzToVisibility" />
+        <cnv:NotZeroToTrueConverter x:Key="NzToTrue" />
+        
+    </UserControl.Resources>
+    <Grid Background="White">
+        <report:StpRicevuta x:Name="RicevutaStampare"/>
+        <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Stampa ricevuta" Command="{Binding StampaRicevuta, Mode=OneWay}">
+
+                <materialDesign:PackIcon Kind="Printer" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Esci da stampa ricevuta" Command="{Binding AnnullaPagamento, Mode=OneWay}">
+                <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<Controls:MetroWindow x:Class="GPNuoto.AboutView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+
+        Height="Auto" Width="400" ResizeMode="NoResize" ShowInTaskbar="False" Loaded="MetroWindow_Loaded" ShowCloseButton="False" ShowIconOnTitleBar="False" ShowMaxRestoreButton="False" ShowMinButton="False" ShowSystemMenuOnRightClick="False" Title="Informazioni su ..." TitleAlignment="Center" VerticalAlignment="Top" SizeToContent="Height" >
+    <Border BorderThickness="2" BorderBrush="{DynamicResource HighlightBrush}">
+        <StackPanel>
+             <Image Source="Resources/logotessera.png" Width="200"></Image>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:PackIcon Kind="Copyright" Height="24" Width="24" VerticalAlignment="Center"/>
+                <TextBlock x:Name="Message" Grid.Column="1"
+                       Margin="0 10 0 10"
+                       FontSize="10" Grid.Row="0" Text="Copyright 2017 - GM Company" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel>
+            <TextBlock x:Name="VersioneProgramma" 
+                       Margin="0 0 0 10"
+                       FontSize="10" Grid.Row="0" Text="Versione:" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+        </StackPanel>
+            <Button Grid.Row="1"  Grid.ColumnSpan="2"  Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Margin="10"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                         Click="btnAnnulla_Click">
+                        <materialDesign:PackIcon Kind="CheckAll" Height="24" Width="24" />
+            </Button>
+
+        </StackPanel>
+    </Border>
+</Controls:MetroWindow>

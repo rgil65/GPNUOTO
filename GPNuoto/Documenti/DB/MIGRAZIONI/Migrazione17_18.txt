@@ -1,0 +1,30 @@
+SET SQL_SAFE_UPDATES = 0;
+
+
+ALTER TABLE `logtornelli` 
+CHANGE COLUMN `Autorizzato` `Autorizzato` BIT NOT NULL ,
+ADD COLUMN `IDAnagraficaAttivitaDate` INT(11) NULL AFTER `IDMovimento`,
+ADD COLUMN `IDCorsi` INT NULL AFTER `IDMovimento`,
+ADD COLUMN `IngressoUscita` CHAR NULL AFTER `CodiceContabile`,
+ADD COLUMN `Simulazione` BIT NULL DEFAULT 0 AFTER `IngressoUscita`,
+ADD COLUMN `EntrataGarantita` BIT NULL DEFAULT 0 AFTER `Simulazione`;
+
+
+
+
+CREATE TABLE `ingressisenzaanagrafica` (
+  `IDIngressiSenzaAnagrafica` int(11) NOT NULL AUTO_INCREMENT,
+  `IDMovimento` int(11) NOT NULL,
+  `idCorsi` int(11) NOT NULL,
+  `DataInizio` datetime NOT NULL,
+  `DataFine` datetime NOT NULL,
+  PRIMARY KEY (`IDIngressiSenzaAnagrafica`),
+  UNIQUE KEY `FK_IDMovimento` (`IDMovimento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE anagraficaattivitadate` 
+CHANGE COLUMN `Presente` `Presente` SMALLINT(5) NOT NULL DEFAULT '0' ;
+
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.8' WHERE `Versione`='1.7';

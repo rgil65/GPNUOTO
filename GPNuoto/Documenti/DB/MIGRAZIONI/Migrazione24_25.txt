@@ -1,0 +1,17 @@
+SET SQL_SAFE_UPDATES = 0;
+
+CREATE TABLE `exportpersonalizzati` (
+  `idExportPersonalizzati` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(45) NOT NULL,
+  `Descrizione` tinytext,
+  `Query` tinytext,
+  `QueryAggiornata` tinytext,
+  PRIMARY KEY (`idExportPersonalizzati`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+
+
+UPDATE `versionedb` SET `Versione`='2.5' WHERE `Versione`='2.4';
+
+

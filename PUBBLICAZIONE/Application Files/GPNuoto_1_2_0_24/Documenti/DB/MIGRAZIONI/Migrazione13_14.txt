@@ -1,0 +1,12 @@
+SET SQL_SAFE_UPDATES = 0;
+
+ALTER TABLE `mysqldbschema`.`tipoattivita` 
+DROP COLUMN `Fiscale`;
+
+ALTER TABLE `mysqldbschema`.`codicicontabili` 
+ADD COLUMN `Fiscale` TINYINT(1) NOT NULL DEFAULT '0' AFTER `ExtraAttivita`;
+
+
+
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.4' WHERE `Versione`='1.3';

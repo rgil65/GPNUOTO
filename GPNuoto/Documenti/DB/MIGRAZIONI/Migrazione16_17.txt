@@ -1,0 +1,21 @@
+SET SQL_SAFE_UPDATES = 0;
+
+CREATE TABLE `logtornelli` (
+  `IDLogTornelli` int(11) NOT NULL AUTO_INCREMENT,
+  `Data` datetime NOT NULL,
+  `LetturaBadge` varchar(255) NOT NULL,
+  `IDAnagrafica` int(11) DEFAULT NULL,
+  `IDAttivita` int(11) DEFAULT NULL,
+  `IDMovimento` int(11) DEFAULT NULL,
+  `Note` varchar(255) DEFAULT NULL,
+  `Autorizzato` char(1) NOT NULL,
+  `Autorizzazionems` int(11) NOT NULL,
+  `CodiceContabile` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`IDLogTornelli`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE  `anagraficaattivitadate` 
+ADD COLUMN `Presente` TINYINT(1) NOT NULL DEFAULT 0 AFTER `Attivo`;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.7' WHERE `Versione`='1.6';

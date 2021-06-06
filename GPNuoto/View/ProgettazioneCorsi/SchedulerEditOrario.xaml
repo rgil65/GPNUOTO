@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="GPNuoto.SchedulerEditOrario"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GPNuoto"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cnv="clr-namespace:GPNuoto.Converters"
+              xmlns:vm="clr-namespace:GPNuoto.ViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:CorsoEditViewModel,IsDesignTimeCreatable=True}"
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <cnv:NotEmptyToVisibilityConverter x:Key="nzToVisibility"/>
+        <cnv:TimeSpanToStringConverter x:Key="TimeSpanToStr"/>
+        <cnv:TimeSpanToDateTimeConverter x:Key="TimeSpanToDateTime"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Path="CalendarManager.CorsoEdit" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+    <Grid  Background="{DynamicResource HighlightBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource HeaderCalendario}"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,10,0,0">Parametri</TextBlock>
+        <Border Grid.Row="0" Margin="80,10,10,0" Padding="0" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="0,0,0,2">
+         <Grid Background="White" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0" >
+                <TextBlock  Text="Inizio:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                    <materialDesign:TimePicker Style="{StaticResource MaterialDesignTimePicker}"  Margin="0,5,0,0"  Is24Hours="True" Width="50" HorizontalAlignment="Left" SelectedTime="{Binding ProgrammazioneInizio, Mode=TwoWay,Converter={StaticResource TimeSpanToDateTime}}" ManipulationCompleted="TimePicker_ManipulationCompleted"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock  Text="Fine:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <materialDesign:TimePicker Style="{StaticResource MaterialDesignTimePicker}" Margin="5,5,0,0"  IsInvalidTextAllowed="false"  Is24Hours="True" Width="50" HorizontalAlignment="Left" SelectedTime="{Binding ProgrammazioneFine, Mode=TwoWay,Converter={StaticResource TimeSpanToDateTime}}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2"  Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  Text="Passo:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <materialDesign:TimePicker Style="{StaticResource MaterialDesignTimePicker}" Margin="5,5,0,0"  IsInvalidTextAllowed="false"  Is24Hours="True" Width="50" HorizontalAlignment="Left" SelectedTime="{Binding StepPianificazione, Mode=TwoWay,Converter={StaticResource TimeSpanToDateTime}}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="3"  Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  Text="Durata:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <materialDesign:TimePicker Style="{StaticResource MaterialDesignTimePicker}"  Margin="5,5,0,0" IsInvalidTextAllowed="false"  Is24Hours="True" Width="50" HorizontalAlignment="Left" SelectedTime="{Binding DurataPianificazione, Mode=TwoWay,Converter={StaticResource TimeSpanToDateTime}}"/>
+            </StackPanel>
+            <Button Grid.Row="0" Grid.Column="4" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    ToolTip="Salvare modifiche parametri programmazione" Command="{Binding SalvaParametriProgrammazione, Mode=OneWay}" Visibility="{Binding IsParametriModificati,Converter={StaticResource BoolToVis}}">
+                    <materialDesign:PackIcon Kind="CheckAll" Height="32" Width="32" />
+            </Button>
+            </Grid>
+        </Border>
+        <Grid x:Name="Scheduler" Grid.Row="1"  Background="{DynamicResource PrimaryHueDarkBrush}" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0"  Height="30" Width="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource HeaderCalendario}" >Ora</TextBlock>
+                <TextBlock Grid.Column="1" Style="{StaticResource HeaderCalendario}" >Lun</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource HeaderCalendario}" >Mar</TextBlock>
+                <TextBlock Grid.Column="3" Style="{StaticResource HeaderCalendario}" >Mer</TextBlock>
+                <TextBlock Grid.Column="4" Style="{StaticResource HeaderCalendario}" >Gio</TextBlock>
+                <TextBlock Grid.Column="5" Style="{StaticResource HeaderCalendario}" >Ven</TextBlock>
+                <TextBlock Grid.Column="6" Style="{StaticResource HeaderCalendario}" >Sab</TextBlock>
+                <TextBlock Grid.Column="7" Style="{StaticResource HeaderCalendario}" >Dom</TextBlock>
+            </Grid>
+            <ScrollViewer  Grid.Row="1" Grid.Column="0"  VerticalScrollBarVisibility="Auto" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Padding="0,5,20,0">
+                <ItemsControl  x:Name="lvCalendario" HorizontalAlignment="Stretch" ItemsSource="{Binding GrigliaProgrammazioneOraria}" Margin="0,5,0,10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" BorderThickness="0,2,0,0" Padding="0,0" Margin="0,0,-30,0">
+                                <Grid Height="30">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Style="{StaticResource TimeTableCalendario}" Margin="0,-10,0,0" Padding="10,0,5,0" Text="{Binding Orario, Converter={StaticResource TimeSpanToStr}}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                    <Button  Grid.Column="1"  Margin="-1" BorderThickness="2,1,1,1" Click="Button_Click" CommandParameter="1" Padding="0" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[1]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="2" Margin="-1" Click="Button_Click" CommandParameter="2" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[2]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="3"  Margin="-1" Click="Button_Click" CommandParameter="3" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[3]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="4"   Margin="-1" Click="Button_Click" CommandParameter="4" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[4]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="5"   Margin="-1" Click="Button_Click" CommandParameter="5" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[5]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="6"   Margin="-1" Click="Button_Click" CommandParameter="6" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[6]}" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button  Grid.Column="7"   Margin="-1" BorderThickness="1,1,3,1" Click="Button_Click" CommandParameter="0" ToolTip="{Binding RangeOrario}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding GiornoSettimana[0]}" />
+                                        </Button.Background>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

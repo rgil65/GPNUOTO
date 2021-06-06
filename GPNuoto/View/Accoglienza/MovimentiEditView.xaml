@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="GPNuoto.MovimentiEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        xmlns:vm="clr-namespace:GPNuoto.ViewModel"
+        xmlns:report="clr-namespace:GPNuoto.Report"
+        mc:Ignorable="d ignore"
+        d:DataContext="{d:DesignInstance Type=vm:SingoloMovimentoViewModel,IsDesignTimeCreatable=True}"
+        d:DesignHeight="300" d:DesignWidth="600">
+    
+
+    <UserControl.DataContext>
+        <vm:SingoloMovimentoViewModel></vm:SingoloMovimentoViewModel>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <cnv:DateTimeToTimeStrConverter x:Key="DateTimeToTimeStr" />
+        <cnv:DateToStringConverter x:Key="DateToString" />
+        <cnv:NotZeroToVisibilityConverter x:Key="NzToVisibility" />
+        <cnv:NotZeroToTrueConverter x:Key="NzToTrue" />
+        <cnv:NotNullToVisibilityConverter x:Key="NotNull2Vis" />
+        <cnv:NotNullToVisibilityHiddenConverter x:Key="NotNull2VisHid" />
+    </UserControl.Resources>
+
+    <Grid Background="White" Margin="5,38,5,2">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Causale contabile" ItemsSource="{Binding ElencoCausaliContabili}" VerticalAlignment="Top"  Margin="5,0,0,0" Visibility="{Binding IDAnagraficaAttivita,Converter={StaticResource NzToVisibility},ConverterParameter=true}"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectedItem="{Binding MovimentoSelezionato, Mode=TwoWay}" SelectedValuePath="Codice" DisplayMemberPath="Descrizione">
+            </ComboBox>
+            <TextBox Grid.Row="1" Grid.Column="0"  Margin="5,15,0,0"
+                materialDesign:HintAssist.Hint="Data pagamento" VerticalAlignment="Center" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True" Text="{Binding DataPagamento,Mode=TwoWay,Converter={StaticResource DateToString}}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
+            </TextBox>
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="5,15,0,0"  materialDesign:HintAssist.Hint="Modalità pagamento" ItemsSource="{Binding ElencoModalitaPagamento}" VerticalAlignment="Center"  
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectedItem="{Binding ModalitaPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Key" DisplayMemberPath="Descrizione" HorizontalAlignment="Right">
+
+            </ComboBox>
+            <TextBox Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3" Margin="5,0,0,5"
+				    x:Name="Descrizione"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    Text="{Binding Descrizione,Mode=TwoWay}"
+				    materialDesign:HintAssist.Hint="Descrizione" VerticalAlignment="Center" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+            </TextBox>
+            <TextBox  Grid.Row="3" Grid.Column="0"  Width="100"   materialDesign:HintAssist.Hint="Totale pagamento" VerticalAlignment="Center" Margin="10,0,0,0"
+                  x:Name="TotalePagamentoTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Right" HorizontalAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="ImportoPagare" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="3" Grid.Column="1" Width="100" materialDesign:HintAssist.Hint="Sconto" VerticalAlignment="Center" Margin="0,0,5,0" HorizontalAlignment="Right"
+                  x:Name="ScontoTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Right">
+
+                <TextBox.Text>
+                    <Binding Path="Sconto" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="3" Grid.Column="2"   Width="100" materialDesign:HintAssist.Hint="Totale ricevuta" VerticalAlignment="Center" HorizontalContentAlignment="Right"
+                  x:Name="TotaleRicevutaTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Right" >
+                <TextBox.Text>
+                    <Binding Path="ImportoPagato" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal"  Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                            Margin="0 0 5 5"
+                            x:Name="btnDettagli"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            Visibility="{Binding HaveDettagli, Converter={StaticResource BoolToVis}}"
+                            ToolTip="Inserimento dettagli movimento" Click="btnDettagli_Click">
+                            
+                <materialDesign:PackIcon Kind="TableEdit" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                            Margin="0 0 5 5"
+                            x:Name="btnConferma"
+                            Visibility="{Binding CanSave, Converter={StaticResource BoolToVis}}"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Salva movimento" Click="btnConfermaPagamento_Click">
+
+                <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                            Margin="0 0 5 5"
+                            x:Name="btnAnnulla"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Annulla senza salvare movimento" Click="btnAnnulla_Click">
+
+                <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

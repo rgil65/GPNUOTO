@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="GPNuoto.Report.StpRicevutaAnonima"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GPNuoto.Report"
+             xmlns:gpm="clr-namespace:GPNuoto.Model"
+             xmlns:cnv="clr-namespace:GPNuoto.Converters"
+             mc:Ignorable="d" 
+             DataContext="{Binding Ricevuta, Source={StaticResource Locator}}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <cnv:StampaRicevuta2DicituraConverter  x:Key="Segno2Dic"/>
+    </UserControl.Resources>
+    <Grid x:Name="Ricevuta"  Background="White"> 
+        <!--<StackPanel>
+        <FlowDocumentPageViewer Margin="10,10,10,10">
+            <FlowDocumentPageViewer.Template>
+
+                <ControlTemplate TargetType="{x:Type FlowDocumentPageViewer}">
+
+                    <AdornerDecorator>
+
+                        <DocumentPageView FlowDocumentPageViewer.IsMasterPage="True" />
+
+                    </AdornerDecorator>
+
+                </ControlTemplate>
+
+            </FlowDocumentPageViewer.Template>
+
+            <FlowDocument x:Name="Flow" PageHeight="14.8cm" PageWidth="21cm" PagePadding="0.5cm,0,0.5cm,0"  FontFamily="Calibri" FontSize="14" ColumnWidth="999999">
+                <Table BorderThickness="0" BorderBrush="Purple">
+                    <Table.Columns>
+                        <TableColumn Width="14cm" />
+                        <TableColumn Width="5cm" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell TextAlignment="Left">
+                                
+                                <Section Margin="10,0,0,0">
+                                    <Paragraph Margin="0">
+                                        <Run FontFamily="pack://application:,,,/Resources/Fonts/#BauhausC Medium" FontWeight="Bold" FontSize="50">GP</Run>
+                                        <Run FontFamily="pack://application:,,,/Resources/Fonts/#BauhausC Medium" FontWeight="Bold" FontSize="14" Text="NUOTO MIRA"/>
+                                    </Paragraph>
+                                    <Paragraph Margin="0,0,0,0" FontSize="5">
+                                        <Run FontFamily="Arial" FontWeight="Bold" FontSize="8" Typography.Capitals="SmallCaps">Società Sportiva Dilettantistica</Run>
+                                    </Paragraph>
+                                    <Paragraph>
+                                        P.I. 02570240271
+                                        <LineBreak/>
+                                        Via G. Di Vittorio 15, 30034 Mira (VE)
+                                        <LineBreak/>
+                                        Tel. 041 422019
+                                        <LineBreak/>
+                                        segreteria@gpnuotomira.it
+                                    </Paragraph>
+                                </Section>
+                            </TableCell>
+                            <TableCell >
+                                --><!--<Paragraph Margin="0,1cm,0,0">
+                                    <Run xml:space="preserve">Ricevuta n. </Run>
+                                    <Run Text="{Binding NumeroRicevuta}"/>
+                                    <Run Text="/"/>
+                                    <Run Text="{Binding  Pagamento.DataPagamento, StringFormat='{}{0:yyyy}', ConverterCulture=it-IT}"/>
+                                </Paragraph>--><!--
+                                <Paragraph  Margin="0,1cm,0,0">
+                                    <Run>Data:</Run>
+                                    <Run Text="{Binding  Pagamento.DataPagamento, StringFormat='{}{0:dd/MM/yyyy}', ConverterCulture=it-IT}"/>
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table BorderThickness="0" BorderBrush="Black" >
+                    <Table.Columns>
+                        <TableColumn Width="7cm" />
+                        <TableColumn Width="12.8cm" />
+                        
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                  
+                            </TableCell>
+                            <TableCell>
+                                <Table>
+                                    <Table.Columns>
+                                        <TableColumn Width="3cm" />
+                                        <TableColumn Width="10cm" />
+                                    </Table.Columns>
+                                    <TableRowGroup>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph>
+                                                    <Run Text="{Binding Pagamento.Segno,Mode=OneWay, Converter={StaticResource Segno2Dic}}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                       
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                    <TableRowGroup>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph>
+                                                    Importo di:
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph FontWeight="Bold">
+                                                    <Run Text="{Binding Pagamento.ImportoPagato,  StringFormat='C',  ConverterCulture='it-IT', Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell ColumnSpan="2">
+                                                <Paragraph Margin="0,10,0,0" >
+                                                        <Run Text="{Binding Pagamento.Descrizione}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph Margin="0,10,0,0">
+                                                    PAGAMENTO:
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Margin="0,10,0,0">
+                                                    <Run Text="{Binding Pagamento.ModalitaPagamento.Descrizione,Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell></TableCell>
+                                            <TableCell TextAlignment="Center">
+                                                <Paragraph>
+                                                    <Run>FIRMA</Run>
+                                                    <LineBreak/>
+                                                    <Run Text="{Binding Pagamento.User,Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+        <Image Source="{Binding QRCode}"/>
+        </StackPanel>-->
+        <Image Source="{Binding QRCode}"/>
+    </Grid>
+    
+</UserControl>

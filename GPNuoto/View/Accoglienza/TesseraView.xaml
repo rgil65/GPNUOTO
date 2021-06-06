@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="GPNuoto.TesseraView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        xmlns:report="clr-namespace:GPNuoto.Report"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        d:DesignWidth="500" d:DesignHeight="300"
+        DataContext="{Binding Tessera, Source={StaticResource Locator}}">
+
+    <UserControl.Resources>
+        <cnv:NotEmptyToVisibilityConverter x:Key="NotEmptyToVisible" />
+        <cnv:ConvertFloatScale x:Key="BadgeProp"/>
+        <cnv:BooleanInvertConverter x:Key="Bool2Inv"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="grid" Background="White" Visibility="{Binding Nominativo,Converter={StaticResource NotEmptyToVisible},ConverterParameter=true}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <report:StpTessera x:Name="Badge" Width="420" Height="300" HorizontalAlignment="Center"/>
+        <!--<Image Source="/GPNuoto;component/Resources/fotodefault.png" Margin="10"></Image>
+        <Grid Grid.Column="1">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Source="/GPNuoto;component/Resources/logotessera.png" Width="Auto" Stretch="Uniform" Margin="10"></Image>
+            <TextBlock Grid.Row="1" Foreground="DarkRed" HorizontalAlignment="Center"  Text="{Binding Nominativo, Mode=OneWay}" Typography.Capitals="SmallCaps" FontFamily="Calibri" FontWeight="Bold" FontSize="28"/>
+            <Image Grid.Row="2" Source="{Binding QRCode}"/>
+        </Grid>-->
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1">
+            <!--<Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                        Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        ToolTip="Acquisizione foto" Command="{Binding AcquisizioneFoto, Mode=OneWay}" >
+                <materialDesign:PackIcon Kind="Camera" Height="24" Width="24" />
+            </Button>-->
+            
+            <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}" IsEnabled="{Binding IsFirstTipoAttivita,Converter={StaticResource Bool2Inv}}"
+                        Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                         Command="{Binding BadgePrecedente, Mode=OneWay}"
+                        ToolTip="Precedente">
+                <materialDesign:PackIcon Kind="ArrowLeftBold" Height="24" Width="24" />
+            </Button>
+            <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}" IsEnabled="{Binding IsLastTipoAttivita,Converter={StaticResource Bool2Inv}}"
+                        Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                         Command="{Binding BadgeSuccessivo, Mode=OneWay}"
+                        ToolTip="Successivo">
+                <materialDesign:PackIcon Kind="ArrowRightBold" Height="24" Width="24" />
+            </Button>
+            <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                        Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        ToolTip="Stampa Badge" 
+                        Command="{Binding StampaBadge, Mode=OneWay}">
+                <materialDesign:PackIcon Kind="Printer" Height="24" Width="24" />
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

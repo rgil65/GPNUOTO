@@ -1,0 +1,9 @@
+
+ALTER TABLE `mysqldbschema`.`corsi` 
+ADD COLUMN `CostoTotale` DECIMAL(10,2) NULL AFTER `NumeroLezioni`;
+
+update corsi set CostoTotale = NumeroLezioni*CostoLordoLezione LIMIT 400;
+ALTER TABLE `mysqldbschema`.`corsi` 
+CHANGE COLUMN `CostoTotale` `CostoTotale` DECIMAL(10,2) NOT NULL ;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.1' WHERE `Versione`='1.0';

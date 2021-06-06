@@ -1,0 +1,9 @@
+SET SQL_SAFE_UPDATES = 0;
+
+ALTER TABLE `setupinformazioniaggiuntive` 
+DROP COLUMN `Tabella`;
+
+ALTER TABLE `mysqldbschema`.`anagraficaattivitadate` 
+ADD COLUMN `DataManuale` TINYINT(1) NULL DEFAULT '0' AFTER `Presente`;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='2.0' WHERE `Versione`='1.8';

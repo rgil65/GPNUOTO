@@ -1,0 +1,108 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    
+
+    <Style x:Key="HeaderStyleGridView"    TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource   {x:Static SystemColors.HighlightTextBrushKey}}" />
+        <Setter Property="Typography.Capitals" Value="SmallCaps"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Padding" Value="2,0,0,0"/>
+        <Setter Property="Height" Value="30"/>
+        
+    </Style>
+    <Style x:Key="CellRightAlign">
+        <Setter Property="Control.HorizontalAlignment"
+            Value="Right" />
+        <Setter Property="Control.Padding"
+            Value="0,0,10,0" />
+    </Style>
+
+    <Style x:Key="HeaderCalendario" TargetType="TextBlock">
+        <Setter  Property="Typography.Capitals" Value="SmallCaps"/>
+        <Setter  Property="FontWeight" Value="Bold"/>
+        <Setter  Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
+        <Setter  Property="Background" Value="{DynamicResource PrimaryHueDarkBrush}"/>
+        <Setter  Property="HorizontalAlignment" Value="Center"/>
+        <Setter  Property="TextAlignment" Value="Center"/>
+        <Setter  Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TimeTableCalendario" TargetType="TextBlock">
+        <Setter  Property="FontWeight" Value="Bold"/>
+        <Setter  Property="Foreground" Value="Blue"/>
+        <Setter  Property="HorizontalAlignment" Value="Center"/>
+        <Setter  Property="TextAlignment" Value="Center"/>
+        <Setter  Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="DataGridColumnHeaderStyleTabella" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,5"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="DataGridColumnHeaderCenterStyleTabella" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,5"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style  x:Key="CellStyleTabellaStandard" TargetType="{x:Type DataGridCell}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=Content.Text}" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderThickness" Value="12,5,5,5"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Background" Value="{x:Null}"/>
+                <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="False">
+                <Setter Property="BorderThickness" Value="12,5,5,5"/>
+                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                <Setter Property="Background" Value="{x:Null}"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    <Style x:Key="TextColumWrapTabellaStandard"  TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextColumCenterTabellaStandard"  TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    <Style x:Key="TextColumTabellaStandard"  TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="CheckBoxColumTabellaStandard" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    <Style x:Key="StileTitoloCampiEdit"  TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="#FF696980"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <Style x:Key="TestoMenuRiepilogo" TargetType="{x:Type TextBlock}">
+        <Style.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment"  Value="Center"/>
+                <Setter Property="HorizontalAlignment"  Value="Center"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>

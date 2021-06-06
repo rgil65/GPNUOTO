@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="GPNuoto.ProgettaCorsiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:local="clr-namespace:GPNuoto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d ignore"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        DataContext="{Binding CalendarManager, Source={StaticResource Locator}}"
+        d:DesignWidth="918.272" d:DesignHeight="519.774" >
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0"    Header="Programmazione Attività" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="10,10,0,10">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Pool" Height="32" Width="32" VerticalAlignment="Center" />
+                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Typography.Capitals="SmallCaps"  Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding}"/>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" DataContext="{Binding Source={StaticResource Locator}}">
+                            <TextBlock VerticalAlignment="Center" Typography.Capitals="SmallCaps" Margin="0,0,0,0" FontWeight="Bold">Attivi</TextBlock>
+                            <ToggleButton  Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="8 0 0 0"
+                                ToolTip="Switch On/Off per visualizzare tutti gli elementi o solo quelli attivi" IsChecked="{Binding CalendarManager.IsShowAll}"  />
+                            <TextBlock VerticalAlignment="Center" Typography.Capitals="SmallCaps" Margin="5,0,10,0" FontWeight="Bold">Tutti</TextBlock>
+                        </StackPanel>
+                    </Grid>
+
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <Grid Background="{DynamicResource PrimaryHueDarkBrush}" Margin="5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource HeaderCalendario}">ATTIVITA'</TextBlock>
+                <local:ManagerTipoAttivitaView Grid.Row="1" Grid.Column="0"></local:ManagerTipoAttivitaView>
+                <local:ManagerProgettazioneCalendarioView Grid.Column="1" Grid.RowSpan="2"></local:ManagerProgettazioneCalendarioView>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

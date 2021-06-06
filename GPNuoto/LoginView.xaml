@@ -1,0 +1,73 @@
+﻿<Controls:MetroWindow x:Class="GPNuoto.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+        xmlns:gpnuotoviewmodel="clr-namespace:GPNuoto.ViewModel"
+        Width="400"
+        Height="260"
+        d:DesignWidth="400" d:DesignHeight="240" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"  ShowInTaskbar="False" IsCloseButtonEnabled="False" IsMaxRestoreButtonEnabled="False" ShowCloseButton="False" Topmost="True" Background="{DynamicResource WindowTitleColorBrush}" ShowTitleBar="False" ShowIconOnTitleBar="False" ShowDialogsOverTitleBar="False" TitleCaps="False">
+
+
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="GP NUOTO MIRA - LOGIN" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="5">
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Login" Height="32" Width="32" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column ="1" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="GP NUOTO MIRA - LOGIN"/>
+                    </Grid>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+            <StackPanel>
+                
+                <Grid HorizontalAlignment="Center" Margin="0,10,0,0" Width="150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                         <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <materialDesign:PackIcon Grid.Row="0" Grid.Column="0" Kind="Account" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Width="100"  CharacterCasing="Lower"
+				    x:Name="Utente"
+				    materialDesign:HintAssist.Hint="Utente" VerticalAlignment="Center" >
+                 </TextBox>
+                <materialDesign:PackIcon Grid.Row="1" Grid.Column="0" Kind="Key" VerticalAlignment="Center"/>
+                <PasswordBox Grid.Row="1" Grid.Column="1" Width="100" 
+				    x:Name="Password"
+				    materialDesign:HintAssist.Hint="Password" VerticalAlignment="Center" HorizontalAlignment="Left" >
+                       </PasswordBox>
+            </Grid>
+                <TextBlock Name="TxtError" HorizontalAlignment="Center" Foreground="Red" Visibility="Hidden">Utente e/o password non corrette</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0,20,20,0"
+                                    HorizontalAlignment="Left"      
+                                    x:Name="btnConferma"
+                                    Click="btnConferma_Click" IsDefault="True">
+                        CONFERMA
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                x:Name="btnAnnulla"
+                               HorizontalAlignment="Right" Margin="0,20,0,0"
+                            Click="btnAnnulla_Click" IsCancel="True">
+                        ANNULLA
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+   </GroupBox>
+
+
+</Controls:MetroWindow>

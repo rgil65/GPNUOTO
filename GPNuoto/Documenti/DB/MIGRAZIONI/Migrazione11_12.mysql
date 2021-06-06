@@ -1,0 +1,4 @@
+ALTER TABLE `mysqldbschema`.`tipoattivita` 
+ADD COLUMN `GruppiXLivello` TINYINT(1) NOT NULL DEFAULT '0' AFTER `CodiceContabile`;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.2' WHERE `Versione`='1.1';

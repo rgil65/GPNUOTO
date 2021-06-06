@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="GPNuoto.Report.StpTessera"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GPNuoto.Report"
+             xmlns:gpm="clr-namespace:GPNuoto.Model"
+             xmlns:cnv="clr-namespace:GPNuoto.Converters"
+             mc:Ignorable="d" 
+             DataContext="{Binding Tessera, Source={StaticResource Locator}}"
+             d:DesignHeight="200" d:DesignWidth="320">
+    <Grid Background="White">
+        <FlowDocumentPageViewer Margin="0">
+            <FlowDocumentPageViewer.Template>
+
+                <ControlTemplate TargetType="{x:Type FlowDocumentPageViewer}">
+
+                    <AdornerDecorator>
+
+                        <DocumentPageView FlowDocumentPageViewer.IsMasterPage="True" />
+
+                    </AdornerDecorator>
+
+                </ControlTemplate>
+
+            </FlowDocumentPageViewer.Template>
+
+            <FlowDocument x:Name="Flow"  PagePadding="0"  FontFamily="Calibri" FontSize="14" ColumnWidth="999999">
+                <BlockUIContainer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding QRCode}"/>
+                        <Grid Grid.Column="1" VerticalAlignment="Center" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Riga1}" TextAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="1" Text="{Binding Riga2}" TextAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Row="2"  Text="{Binding Riga3}" TextAlignment="Center"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+    </Grid>
+</UserControl>

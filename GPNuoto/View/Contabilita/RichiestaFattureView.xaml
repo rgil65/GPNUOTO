@@ -1,0 +1,114 @@
+﻿<UserControl x:Name="userControl" x:Class="GPNuoto.RichiestaFattureView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:local="clr-namespace:GPNuoto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        mc:Ignorable="d ignore"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+         xmlns:vm="clr-namespace:GPNuoto.ViewModel"
+        d:DesignWidth="918.272" d:DesignHeight="519.774" 
+        DataContext="{Binding Fatture, Source={StaticResource Locator}}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <cnv:ItemSelectedToColor x:Key="SelectionToColor"/>
+        <cnv:DateNotNullToVisibilityConverter x:Key="DateNotNullToVis"/>
+        <cnv:NotEmptyToVisibilityConverter x:Key="NotEmpty2Vis"/>
+
+    </UserControl.Resources>
+    <GroupBox Header="Richiesta fatture" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="0,0,0,0" DataContext="{Binding Source={StaticResource Locator}}">
+        <GroupBox.HeaderTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Receipt" Height="32" Width="32" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,0,0,0" VerticalAlignment="Center"  Typography.Capitals="SmallCaps"  Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="{Binding}"/>
+                    </StackPanel>
+                    <Button Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                                            Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                           ToolTip="Ricarica situazione richiesta fatture" Command="{Binding Fatture.RefreshRichiesteFatture, Mode=OneWay}" DataContext="{Binding Source={StaticResource Locator}}">
+                        <materialDesign:PackIcon Kind="Autorenew" Height="24" Width="24" />
+                    </Button>
+                </Grid>
+            </DataTemplate>
+        </GroupBox.HeaderTemplate>
+        
+            <ScrollViewer Margin="2"  VerticalScrollBarVisibility="Auto" Background="White"  HorizontalAlignment="Stretch">
+                <ItemsControl  x:Name="lvElencoRichiesteFatture" ItemsSource="{Binding Fatture.ElencoRichiesteFatture}" Margin="0,0,0,0" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="5" BorderBrush="{StaticResource HighlightBrush}" Margin="5" Padding="5" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                                            Margin="0 0 5 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                           ToolTip="Convalida creazione fattura" Click="ConvalidaFattura_Click"  CommandParameter="{Binding}">
+                                        <materialDesign:PackIcon Kind="Pen" Height="24" Width="24" />
+                                    </Button>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition/>
+                                        
+                                        </Grid.RowDefinitions>
+                                        <Border Grid.Row="0" Background="{StaticResource HighlightBrush}" Margin="1">
+                                        <TextBlock Style="{StaticResource HeaderCalendario}" Text="{Binding Anagrafica.NominativoFattura}"/>
+                                        </Border>
+                                        <StackPanel Grid.Row="1">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Anagrafica.IndirizzoFatturaCalcolato}" Margin="0,5,0,5"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="CF: " Visibility="{Binding Anagrafica.CodiceFiscale, Converter={StaticResource NotEmpty2Vis}, ConverterParameter=true}"/>
+                                            <TextBlock Text="{Binding Anagrafica.CodiceFiscale}"/>
+                                            <TextBlock Text=" PI: " xml:space="preserve" Visibility="{Binding Anagrafica.FatturaPIVACF, Converter={StaticResource NotEmpty2Vis}, ConverterParameter=true}"/>
+                                            <TextBlock Text="{Binding Anagrafica.FatturaPIVACF}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                        <Border Grid.Row="0" Background="{StaticResource HighlightBrush}" Margin="1">
+                                            <TextBlock Style="{StaticResource HeaderCalendario}" Text="{Binding Movimento.DataOraPagamento}"/>
+                                        </Border>
+                                        <Grid Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding Anagrafica.TipoFattura}" Typography.Capitals="SmallCaps" FontWeight="Bold"> </TextBlock>
+                                            <TextBlock Grid.Column="1"  Text="{Binding Anagrafica.FatturaCodiceUnivoco}" Typography.Capitals="SmallCaps" FontWeight="Bold"></TextBlock>
+                                            <TextBlock  Grid.Row="1" Grid.Column="0" Text="{Binding Movimento.ImportoPagato,StringFormat=C,ConverterCulture=it-IT}"/>
+                                            <TextBlock  Grid.Row="1" Grid.Column="1" Text="{Binding Movimento.ModalitaPagamento.Descrizione}"/>
+                                            <TextBlock  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Movimento.Descrizione}"/>
+                                    </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+        </ScrollViewer>
+    </GroupBox>
+</UserControl>

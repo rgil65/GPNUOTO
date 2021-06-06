@@ -1,0 +1,154 @@
+﻿<UserControl x:Class="GPNuoto.MovimentiGiornataView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        xmlns:view="clr-namespace:GPNuoto"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Movimenti, Source={StaticResource Locator}}"
+        d:DesignWidth="500" d:DesignHeight="189.5">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <cnv:NotNullToVisibilityConverter x:Key="NN2Vis"/>
+        <cnv:StringRemoveNewLine x:Key="RNL"/>
+        <Storyboard x:Key="OpenAddMovimento">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddMovimentoView">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseAddMovimento">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AddMovimentoView">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid x:Name="border"  Background="{DynamicResource HighlightBrush}" Margin="0">
+        <DataGrid x:Name="ListaMovimenti" Padding="0" Margin="2,2,2,2" ItemsSource="{Binding ElencoMovimenti}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" ColumnWidth="*"  CanUserDeleteRows="False" SelectionMode="Extended" SelectionUnit="FullRow"  VerticalScrollBarVisibility="Auto"
+                  IsReadOnly="True" SelectedItem="{Binding MovimentoSelezionato,Mode=TwoWay}">
+            <!--<DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    --><!--<Setter Property="FocusVisualStyle" Value="{x:Null}"/>--><!--
+                </Style>
+            </DataGrid.CellStyle>-->
+            <DataGrid.CellStyle>
+                <!--Override Highlighting so that its easy to see what is selected even when the control is not focused-->
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=IsKeyboardFocusWithin}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+
+
+            <DataGrid.Columns>
+                <materialDesign:MaterialDataGridTextColumn Width="40" Binding="{Binding DataPagamento, StringFormat='{}{0:HH:mm}', ConverterCulture=it-IT}" Header="Ora" HeaderStyle="{StaticResource HeaderStyleGridView}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="60" Binding="{Binding User}" Header="Utente" HeaderStyle="{StaticResource HeaderStyleGridView}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="65" Binding="{Binding ImportoPagato, StringFormat=C, ConverterCulture=it-IT}" HeaderStyle="{StaticResource HeaderStyleGridView}"  Header="Importo">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </materialDesign:MaterialDataGridTextColumn>
+                <materialDesign:MaterialDataGridTextColumn Width="65" Binding="{Binding ModalitaPagamento.Descrizione}" HeaderStyle="{StaticResource HeaderStyleGridView}"  Header="Tipo Pag."/>
+                <materialDesign:MaterialDataGridTextColumn Width="100" Binding="{Binding Nominativo}"   HeaderStyle="{StaticResource HeaderStyleGridView}" Header="Nominativo">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="{Binding Nominativo}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </materialDesign:MaterialDataGridTextColumn>
+                <materialDesign:MaterialDataGridTextColumn  Binding="{Binding Descrizione, Converter={StaticResource RNL}}" Header="Descrizione" HeaderStyle="{StaticResource HeaderStyleGridView}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="{Binding Descrizione}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </materialDesign:MaterialDataGridTextColumn>
+                
+            </DataGrid.Columns>
+            
+
+
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.RowSpan="4">
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" x:Name="btnCancellaMovimento"
+                            Visibility="{Binding IsMovimentoModificabile, Converter={StaticResource BoolToVis}}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Cancella movimento" Click="btnCancellaMovimento_Click">
+
+                <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" x:Name="btnModificaMovimento"
+                            Visibility="{Binding IsMovimentoModificabile, Converter={StaticResource BoolToVis}}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Modifica movimento" Click="btnModificaMovimento_Click">
+
+                <materialDesign:PackIcon Kind="Pen" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" x:Name="btnStampaRicevutaFiscale"
+                            Visibility="{Binding IsMovimentoSelezionatoFiscale, Converter={StaticResource BoolToVis}}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Stampa ricevuta fiscale" Click="btnStampaRicevutaFiscale_Click">
+
+                <materialDesign:PackIcon Kind="CurrencyEur" Height="24" Width="24" />
+            </Button>
+            <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                        Margin="0 0 5 5" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        Visibility="{Binding MovimentoSelezionato, Converter={StaticResource NN2Vis}}"
+                         x:Name="btnPrintRicevuta"
+                        ToolTip="Stampa ricevuta" 
+                        Click="btnViewRicevuta_Click">
+                <materialDesign:PackIcon Kind="Printer" Height="24" Width="24" />
+            </Button>
+            <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                        Margin="0 0 5 5"  VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                         x:Name="btnAddMovimento"
+                        ToolTip="Aggiunta di un movimento non collegato ad una anagrafica" 
+                        Click="btnAddMovimento_Click">
+                <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+            </Button>
+
+        </StackPanel>
+        <view:MovimentiEditView x:Name="AddMovimentoView" DataContext="{Binding  NewMovimento}" Visibility="Hidden"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,64 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+             xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+             xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:cnv="clr-namespace:GPNuoto.Converters"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="GPNuoto.UtentiElencoView"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <Binding Path="TabellaUtenti" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+    <Border x:Name="UtentiElenco" Grid.Column="0" Grid.Row="0"  BorderThickness="0" Background="{DynamicResource HighlightBrush}" Padding="2" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="10,0,0,0" Grid.Column="0" Text="Utenti" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" FontSize="14" FontWeight="Bold" Typography.Capitals="SmallCaps"/>
+                <StackPanel  Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <TextBlock VerticalAlignment="Center" Typography.Capitals="SmallCaps" Margin="0,0,0,0" FontWeight="Bold"><Run Text="Attivi"/></TextBlock>
+                    <ToggleButton  Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="8 0 0 0"
+                                    ToolTip="Switch On/Off per visualizzare tutti gli elementi o solo quelli attivi" IsChecked="{Binding bShowAll,Mode=TwoWay}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" />
+                    <TextBlock VerticalAlignment="Center" Typography.Capitals="SmallCaps" Margin="5,0,10,0" FontWeight="Bold"><Run Text="Tutti"/></TextBlock>
+                </StackPanel>
+
+            </Grid>
+            
+
+            <DataGrid  Margin="2" Grid.Row="1"  x:Name="TabellaCodici"  ItemsSource="{Binding Elenco}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False" ColumnWidth="*"  CanUserDeleteRows="False" SelectionMode="Extended" SelectionUnit="FullRow"  
+                           IsReadOnly="True" MouseDoubleClick="TabellaCodici_MouseDoubleClick" SelectedItem="{Binding ElementoSelezionato, Mode=TwoWay}" HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleTabella}" CellStyle="{StaticResource CellStyleTabellaStandard}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="100" Binding="{Binding user}" Header="Utente"  IsReadOnly="True" ElementStyle="{StaticResource TextColumWrapTabellaStandard}"/>
+                    <DataGridTextColumn Width="100" Binding="{Binding CodiceContabileCassa}" Header="Cassa"  IsReadOnly="True" ElementStyle="{StaticResource TextColumWrapTabellaStandard}"/>
+                    <DataGridTextColumn Width="100" Binding="{Binding Abilitazioni}" Header="Abilitazioni"  IsReadOnly="True" ElementStyle="{StaticResource TextColumWrapTabellaStandard}"/>
+                    <DataGridTextColumn Width="*" Binding="{Binding Note}" Header="Note" IsReadOnly="True" ElementStyle="{StaticResource TextColumWrapTabellaStandard}"/>
+                    <DataGridCheckBoxColumn Width="70" Binding="{Binding IsAttivo}"  ElementStyle="{StaticResource CheckBoxColumTabellaStandard}" Header="Attivo" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button  Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                        Margin="0 0 25 5" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                         x:Name="btnAdd"
+                        ToolTip="Aggiungi un utente" 
+                        Command="{Binding AddCodice, Mode=OneWay}">
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+    </Border>
+
+</UserControl>

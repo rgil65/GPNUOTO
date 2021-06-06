@@ -1,0 +1,6 @@
+SET SQL_SAFE_UPDATES = 0;
+
+ALTER TABLE `mysqldbschema`.`codicicontabili` 
+ADD COLUMN `ImportoPredefinito` DECIMAL(5,2) NULL DEFAULT 0 AFTER `Attivo`;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.6' WHERE `Versione`='1.5';

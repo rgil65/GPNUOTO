@@ -1,0 +1,19 @@
+idTemplateAttivita;Nome;GiorniFrequenza;DurataMinuti
+1;Attività  bisettimanale 45 min. - Mar/Ven;0100100;45
+2;Attività  bisettimanale 45 min. - Lun/Gio;1001000;45
+4;Attività  bisettimanale 45 min. - Mer/Sab;0010010;45
+5;Attività  monosettimanale 45 min. - Lun;1000000;45
+6;Attività  monosettimanale 45 min. - Mar;0100000;45
+7;Attività  monosettimanale 45 min. - Mer;0010000;45
+8;Attività  monosettimanale 45 min. - Gio;0001000;45
+9;Attività  monosettimanale 45 min. - Ven;0000100;45
+10;Attività  monosettimanale 45 min. - Sab;0000010;45
+11;Attività  monosettimanale 45 min. - Dom;0000001;45
+12;Attività  monosettimanale 30 min. - Sab;0000010;30
+13;Attività  monosettimanale 60 min. - Lun;1000000;60
+14;Attività  monosettimanale 60 min. - Mar;0100000;60
+15;Attività  monosettimanale 60 min. - Mer;0010000;60
+16;Attività  monosettimanale 60 min. - Gio;0001000;60
+17;Attività  monosettimanale 60 min. - Ven;0000100;60
+18;Attività  monosettimanale 60 min. - Sab;0000010;60
+19;Attività  monosettimanale 60 min. - Dom;0000001;60

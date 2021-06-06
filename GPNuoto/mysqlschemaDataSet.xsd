@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="mysqlschemaDataSet" targetNamespace="http://tempuri.org/mysqlschemaDataSet.xsd" xmlns:mstns="http://tempuri.org/mysqlschemaDataSet.xsd" xmlns="http://tempuri.org/mysqlschemaDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="mysqlschemaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="mysqlschemaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GPNuoto.Properties.Settings.GlobalReference.Default.mysqlschemaConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="anagraficaTableAdapter" GeneratorDataComponentClassName="anagraficaTableAdapter" Name="anagrafica" UserDataComponentName="anagraficaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.anagrafica" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IDAnagrafica`, `Cognome`, `Nome`, `IDLuogoNascita`, `DataNascita`, `Sesso`, `CodiceFiscale`, `IDComuneResidenza`, `CAP`, `Indirizzo`, `Note`, `Localita`, `Telefono`, `Cellulare`, `Email` FROM `anagrafica`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="anagraficaattivitaTableAdapter" GeneratorDataComponentClassName="anagraficaattivitaTableAdapter" Name="anagraficaattivita" UserDataComponentName="anagraficaattivitaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.anagraficaattivita" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idAnagraficaAttivita`, `idAnagrafica`, `idAttivita`, `DataInserimento`, `DataInizio`, `DataFine`, `TotaleLezioniEffettivo`, `TotaleDaPagare`, `Note` FROM `anagraficaattivita`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="attivitaTableAdapter" GeneratorDataComponentClassName="attivitaTableAdapter" Name="attivita" UserDataComponentName="attivitaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.attivita" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idAttivita`, `idCorsi`, `Titolo`, `DataInizio`, `DataFine`, `IsAttivo` FROM `attivita`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="codicicontabiliTableAdapter" GeneratorDataComponentClassName="codicicontabiliTableAdapter" Name="codicicontabili" UserDataComponentName="codicicontabiliTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.codicicontabili" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Codice`, `Descrizione` FROM `codicicontabili`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="comuneresidenzaTableAdapter" GeneratorDataComponentClassName="comuneresidenzaTableAdapter" Name="comuneresidenza" UserDataComponentName="comuneresidenzaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.comuneresidenza" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IDComuneResidenza`, `Comune`, `CAP`, `SiglaProvincia` FROM `comuneresidenza`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="corsiTableAdapter" GeneratorDataComponentClassName="corsiTableAdapter" Name="corsi" UserDataComponentName="corsiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.corsi" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idCorsi`, `idTipoAttivita`, `NomeCorso`, `Note`, `CostoNettoLezione`, `CostoIvaLezione`, `CostoLordoLezione`, `NumeroLezioni`, `IsAttivo` FROM `corsi`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="corsodettaglioTableAdapter" GeneratorDataComponentClassName="corsodettaglioTableAdapter" Name="corsodettaglio" UserDataComponentName="corsodettaglioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.corsodettaglio" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idCorsoDettaglioOrari`, `idCorsi`, `OraInizio`, `OraFine`, `Giorno` FROM `corsodettaglio`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="informazioniaggiuntiveTableAdapter" GeneratorDataComponentClassName="informazioniaggiuntiveTableAdapter" Name="informazioniaggiuntive" UserDataComponentName="informazioniaggiuntiveTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.informazioniaggiuntive" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IDInformazioniAggiuntive`, `IDSetupInformazioniAggiuntive`, `IDRecord`, `Valore` FROM `informazioniaggiuntive`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="luoghinascitaTableAdapter" GeneratorDataComponentClassName="luoghinascitaTableAdapter" Name="luoghinascita" UserDataComponentName="luoghinascitaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.luoghinascita" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IDLuoghiNascita`, `Descrizione`, `CodiceISTAT`, `Estero`, `DescrizioneAggiuntiva` FROM `luoghinascita`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="modalitapagamentoTableAdapter" GeneratorDataComponentClassName="modalitapagamentoTableAdapter" Name="modalitapagamento" UserDataComponentName="modalitapagamentoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.modalitapagamento" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `KeyModalita`, `Descrizione` FROM `modalitapagamento`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pagamentiTableAdapter" GeneratorDataComponentClassName="pagamentiTableAdapter" Name="pagamenti" UserDataComponentName="pagamentiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.pagamenti" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idPagamenti`, `idAnagrafica`, `idAnagraficaAttivita`, `Descrizionepagamento`, `DataPagamento`, `TotalePagamento`, `Sconto`, `ImportoPagato`, `ModalitaPagamento`, `StampaRicevuta`, `User`, `CCDare`, `CCAvere` FROM `pagamenti`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="registrocassaTableAdapter" GeneratorDataComponentClassName="registrocassaTableAdapter" Name="registrocassa" UserDataComponentName="registrocassaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.registrocassa" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idRegistroCassa`, `User`, `Cassa`, `DataApertura`, `ValoreApertura`, `ValoreAperturaReale`, `NoteApertura`, `DataChiusura`, `ValoreChiusura`, `ValoreChiusuraReale`, `NotaChiusura` FROM `registrocassa`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="setupinformazioniaggiuntiveTableAdapter" GeneratorDataComponentClassName="setupinformazioniaggiuntiveTableAdapter" Name="setupinformazioniaggiuntive" UserDataComponentName="setupinformazioniaggiuntiveTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.setupinformazioniaggiuntive" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `IDSetupInformazioniAggiuntive`, `Tabella`, `CodInfo`, `TipoInformazione`, `Descrizione`, `Ordine`, `Parametrizzazione` FROM `setupinformazioniaggiuntive`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tipoattivitaTableAdapter" GeneratorDataComponentClassName="tipoattivitaTableAdapter" Name="tipoattivita" UserDataComponentName="tipoattivitaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.tipoattivita" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idTipoAttivita`, `Descrizione`, `Background`, `Foreground`, `CodiceContabile`, `IsAttivo` FROM `tipoattivita`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tipopagamentovarioTableAdapter" GeneratorDataComponentClassName="tipopagamentovarioTableAdapter" Name="tipopagamentovario" UserDataComponentName="tipopagamentovarioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.tipopagamentovario" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `idTipoPagamentoVario`, `Descrizione`, `CodiceContabile` FROM `tipopagamentovario`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="utentiTableAdapter" GeneratorDataComponentClassName="utentiTableAdapter" Name="utenti" UserDataComponentName="utentiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="mysqlschemaConnectionString (Settings)" DbObjectName="mysqlschema.utenti" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `User`, `Password`, `Note`, `Attivo`, `Cassa`, `Accoglienza`, `ProgettazioneCorsi`, `Configurazione`, `Contabilita` FROM `utenti`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="mysqlschemaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="mysqlschemaDataSet" msprop:Generator_UserDSName="mysqlschemaDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="anagrafica" msprop:Generator_TableClassName="anagraficaDataTable" msprop:Generator_TableVarName="tableanagrafica" msprop:Generator_TablePropName="anagrafica" msprop:Generator_RowDeletingName="anagraficaRowDeleting" msprop:Generator_RowChangingName="anagraficaRowChanging" msprop:Generator_RowEvHandlerName="anagraficaRowChangeEventHandler" msprop:Generator_RowDeletedName="anagraficaRowDeleted" msprop:Generator_UserTableName="anagrafica" msprop:Generator_RowChangedName="anagraficaRowChanged" msprop:Generator_RowEvArgName="anagraficaRowChangeEvent" msprop:Generator_RowClassName="anagraficaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="anagraficaattivita" msprop:Generator_TableClassName="anagraficaattivitaDataTable" msprop:Generator_TableVarName="tableanagraficaattivita" msprop:Generator_TablePropName="anagraficaattivita" msprop:Generator_RowDeletingName="anagraficaattivitaRowDeleting" msprop:Generator_RowChangingName="anagraficaattivitaRowChanging" msprop:Generator_RowEvHandlerName="anagraficaattivitaRowChangeEventHandler" msprop:Generator_RowDeletedName="anagraficaattivitaRowDeleted" msprop:Generator_UserTableName="anagraficaattivita" msprop:Generator_RowChangedName="anagraficaattivitaRowChanged" msprop:Generator_RowEvArgName="anagraficaattivitaRowChangeEvent" msprop:Generator_RowClassName="anagraficaattivitaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="attivita" msprop:Generator_TableClassName="attivitaDataTable" msprop:Generator_TableVarName="tableattivita" msprop:Generator_TablePropName="attivita" msprop:Generator_RowDeletingName="attivitaRowDeleting" msprop:Generator_RowChangingName="attivitaRowChanging" msprop:Generator_RowEvHandlerName="attivitaRowChangeEventHandler" msprop:Generator_RowDeletedName="attivitaRowDeleted" msprop:Generator_UserTableName="attivita" msprop:Generator_RowChangedName="attivitaRowChanged" msprop:Generator_RowEvArgName="attivitaRowChangeEvent" msprop:Generator_RowClassName="attivitaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="codicicontabili" msprop:Generator_TableClassName="codicicontabiliDataTable" msprop:Generator_TableVarName="tablecodicicontabili" msprop:Generator_TablePropName="codicicontabili" msprop:Generator_RowDeletingName="codicicontabiliRowDeleting" msprop:Generator_RowChangingName="codicicontabiliRowChanging" msprop:Generator_RowEvHandlerName="codicicontabiliRowChangeEventHandler" msprop:Generator_RowDeletedName="codicicontabiliRowDeleted" msprop:Generator_UserTableName="codicicontabili" msprop:Generator_RowChangedName="codicicontabiliRowChanged" msprop:Generator_RowEvArgName="codicicontabiliRowChangeEvent" msprop:Generator_RowClassName="codicicontabiliRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="comuneresidenza" msprop:Generator_TableClassName="comuneresidenzaDataTable" msprop:Generator_TableVarName="tablecomuneresidenza" msprop:Generator_TablePropName="comuneresidenza" msprop:Generator_RowDeletingName="comuneresidenzaRowDeleting" msprop:Generator_RowChangingName="comuneresidenzaRowChanging" msprop:Generator_RowEvHandlerName="comuneresidenzaRowChangeEventHandler" msprop:Generator_RowDeletedName="comuneresidenzaRowDeleted" msprop:Generator_UserTableName="comuneresidenza" msprop:Generator_RowChangedName="comuneresidenzaRowChanged" msprop:Generator_RowEvArgName="comuneresidenzaRowChangeEvent" msprop:Generator_RowClassName="comuneresidenzaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="corsi" msprop:Generator_TableClassName="corsiDataTable" msprop:Generator_TableVarName="tablecorsi" msprop:Generator_TablePropName="corsi" msprop:Generator_RowDeletingName="corsiRowDeleting" msprop:Generator_RowChangingName="corsiRowChanging" msprop:Generator_RowEvHandlerName="corsiRowChangeEventHandler" msprop:Generator_RowDeletedName="corsiRowDeleted" msprop:Generator_UserTableName="corsi" msprop:Generator_RowChangedName="corsiRowChanged" msprop:Generator_RowEvArgName="corsiRowChangeEvent" msprop:Generator_RowClassName="corsiRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="corsodettaglio" msprop:Generator_TableClassName="corsodettaglioDataTable" msprop:Generator_TableVarName="tablecorsodettaglio" msprop:Generator_TablePropName="corsodettaglio" msprop:Generator_RowDeletingName="corsodettaglioRowDeleting" msprop:Generator_RowChangingName="corsodettaglioRowChanging" msprop:Generator_RowEvHandlerName="corsodettaglioRowChangeEventHandler" msprop:Generator_RowDeletedName="corsodettaglioRowDeleted" msprop:Generator_UserTableName="corsodettaglio" msprop:Generator_RowChangedName="corsodettaglioRowChanged" msprop:Generator_RowEvArgName="corsodettaglioRowChangeEvent" msprop:Generator_RowClassName="corsodettaglioRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="informazioniaggiuntive" msprop:Generator_TableClassName="informazioniaggiuntiveDataTable" msprop:Generator_TableVarName="tableinformazioniaggiuntive" msprop:Generator_TablePropName="informazioniaggiuntive" msprop:Generator_RowDeletingName="informazioniaggiuntiveRowDeleting" msprop:Generator_RowChangingName="informazioniaggiuntiveRowChanging" msprop:Generator_RowEvHandlerName="informazioniaggiuntiveRowChangeEventHandler" msprop:Generator_RowDeletedName="informazioniaggiuntiveRowDeleted" msprop:Generator_UserTableName="informazioniaggiuntive" msprop:Generator_RowChangedName="informazioniaggiuntiveRowChanged" msprop:Generator_RowEvArgName="informazioniaggiuntiveRowChangeEvent" msprop:Generator_RowClassName="informazioniaggiuntiveRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="luoghinascita" msprop:Generator_TableClassName="luoghinascitaDataTable" msprop:Generator_TableVarName="tableluoghinascita" msprop:Generator_TablePropName="luoghinascita" msprop:Generator_RowDeletingName="luoghinascitaRowDeleting" msprop:Generator_RowChangingName="luoghinascitaRowChanging" msprop:Generator_RowEvHandlerName="luoghinascitaRowChangeEventHandler" msprop:Generator_RowDeletedName="luoghinascitaRowDeleted" msprop:Generator_UserTableName="luoghinascita" msprop:Generator_RowChangedName="luoghinascitaRowChanged" msprop:Generator_RowEvArgName="luoghinascitaRowChangeEvent" msprop:Generator_RowClassName="luoghinascitaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="modalitapagamento" msprop:Generator_TableClassName="modalitapagamentoDataTable" msprop:Generator_TableVarName="tablemodalitapagamento" msprop:Generator_TablePropName="modalitapagamento" msprop:Generator_RowDeletingName="modalitapagamentoRowDeleting" msprop:Generator_RowChangingName="modalitapagamentoRowChanging" msprop:Generator_RowEvHandlerName="modalitapagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="modalitapagamentoRowDeleted" msprop:Generator_UserTableName="modalitapagamento" msprop:Generator_RowChangedName="modalitapagamentoRowChanged" msprop:Generator_RowEvArgName="modalitapagamentoRowChangeEvent" msprop:Generator_RowClassName="modalitapagamentoRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pagamenti" msprop:Generator_TableClassName="pagamentiDataTable" msprop:Generator_TableVarName="tablepagamenti" msprop:Generator_TablePropName="pagamenti" msprop:Generator_RowDeletingName="pagamentiRowDeleting" msprop:Generator_RowChangingName="pagamentiRowChanging" msprop:Generator_RowEvHandlerName="pagamentiRowChangeEventHandler" msprop:Generator_RowDeletedName="pagamentiRowDeleted" msprop:Generator_UserTableName="pagamenti" msprop:Generator_RowChangedName="pagamentiRowChanged" msprop:Generator_RowEvArgName="pagamentiRowChangeEvent" msprop:Generator_RowClassName="pagamentiRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="registrocassa" msprop:Generator_TableClassName="registrocassaDataTable" msprop:Generator_TableVarName="tableregistrocassa" msprop:Generator_TablePropName="registrocassa" msprop:Generator_RowDeletingName="registrocassaRowDeleting" msprop:Generator_RowChangingName="registrocassaRowChanging" msprop:Generator_RowEvHandlerName="registrocassaRowChangeEventHandler" msprop:Generator_RowDeletedName="registrocassaRowDeleted" msprop:Generator_UserTableName="registrocassa" msprop:Generator_RowChangedName="registrocassaRowChanged" msprop:Generator_RowEvArgName="registrocassaRowChangeEvent" msprop:Generator_RowClassName="registrocassaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="setupinformazioniaggiuntive" msprop:Generator_TableClassName="setupinformazioniaggiuntiveDataTable" msprop:Generator_TableVarName="tablesetupinformazioniaggiuntive" msprop:Generator_TablePropName="setupinformazioniaggiuntive" msprop:Generator_RowDeletingName="setupinformazioniaggiuntiveRowDeleting" msprop:Generator_RowChangingName="setupinformazioniaggiuntiveRowChanging" msprop:Generator_RowEvHandlerName="setupinformazioniaggiuntiveRowChangeEventHandler" msprop:Generator_RowDeletedName="setupinformazioniaggiuntiveRowDeleted" msprop:Generator_UserTableName="setupinformazioniaggiuntive" msprop:Generator_RowChangedName="setupinformazioniaggiuntiveRowChanged" msprop:Generator_RowEvArgName="setupinformazioniaggiuntiveRowChangeEvent" msprop:Generator_RowClassName="setupinformazioniaggiuntiveRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tipoattivita" msprop:Generator_TableClassName="tipoattivitaDataTable" msprop:Generator_TableVarName="tabletipoattivita" msprop:Generator_TablePropName="tipoattivita" msprop:Generator_RowDeletingName="tipoattivitaRowDeleting" msprop:Generator_RowChangingName="tipoattivitaRowChanging" msprop:Generator_RowEvHandlerName="tipoattivitaRowChangeEventHandler" msprop:Generator_RowDeletedName="tipoattivitaRowDeleted" msprop:Generator_UserTableName="tipoattivita" msprop:Generator_RowChangedName="tipoattivitaRowChanged" msprop:Generator_RowEvArgName="tipoattivitaRowChangeEvent" msprop:Generator_RowClassName="tipoattivitaRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tipopagamentovario" msprop:Generator_TableClassName="tipopagamentovarioDataTable" msprop:Generator_TableVarName="tabletipopagamentovario" msprop:Generator_TablePropName="tipopagamentovario" msprop:Generator_RowDeletingName="tipopagamentovarioRowDeleting" msprop:Generator_RowChangingName="tipopagamentovarioRowChanging" msprop:Generator_RowEvHandlerName="tipopagamentovarioRowChangeEventHandler" msprop:Generator_RowDeletedName="tipopagamentovarioRowDeleted" msprop:Generator_UserTableName="tipopagamentovario" msprop:Generator_RowChangedName="tipopagamentovarioRowChanged" msprop:Generator_RowEvArgName="tipopagamentovarioRowChangeEvent" msprop:Generator_RowClassName="tipopagamentovarioRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="utenti" msprop:Generator_TableClassName="utentiDataTable" msprop:Generator_TableVarName="tableutenti" msprop:Generator_TablePropName="utenti" msprop:Generator_RowDeletingName="utentiRowDeleting" msprop:Generator_RowChangingName="utentiRowChanging" msprop:Generator_RowEvHandlerName="utentiRowChangeEventHandler" msprop:Generator_RowDeletedName="utentiRowDeleted" msprop:Generator_UserTableName="utenti" msprop:Generator_RowChangedName="utentiRowChanged" msprop:Generator_RowEvArgName="utentiRowChangeEvent" msprop:Generator_RowClassName="utentiRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="GPNuoto.PagamentiEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gpnuotomodel="clr-namespace:GPNuoto.Model"
+        xmlns:cnv="clr-namespace:GPNuoto.Converters"
+        xmlns:report="clr-namespace:GPNuoto.Report"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Pagamenti.CurrentPagamento, Source={StaticResource Locator}}">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <cnv:DateTimeToTimeStrConverter x:Key="DateTimeToTimeStr" />
+        <cnv:DateToStringConverter x:Key="DateToString" />
+        <cnv:NotZeroToVisibilityConverter x:Key="NzToVisibility" />
+        <cnv:NotZeroToTrueConverter x:Key="NzToTrue" />
+        <cnv:NotNullToVisibilityConverter x:Key="NotNull2Vis" />
+        <cnv:NotNullToVisibilityHiddenConverter x:Key="NotNull2VisHid" />
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="3" Margin="10,0,0,0"
+				    x:Name="Descrizione"
+                    AcceptsReturn="True"
+                     TextWrapping="Wrap"
+				    materialDesign:HintAssist.Hint="Descrizione" VerticalAlignment="Center" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <TextBox.Text>
+                    <Binding Path="Descrizione" UpdateSourceTrigger="PropertyChanged"  Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <gpnuotomodel:NotEmptyValidationRule ValidationStep="UpdatedValue" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Grid.Row="1" Grid.Column="0"  Margin="10,0,10,0"
+                materialDesign:HintAssist.Hint="Data pagamento" VerticalAlignment="Center" 
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True" Text="{Binding DataPagamento,Mode=TwoWay,Converter={StaticResource DateToString}}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
+            </TextBox>
+    
+            <CheckBox  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="3" Style="{StaticResource MaterialDesignCheckBox}" Margin="10 0 0 0" VerticalAlignment="Center" IsChecked="{Binding IsRichiestaFattura}" HorizontalAlignment="Left">
+                Richiesta fattura
+            </CheckBox>
+            <!--<DatePicker  Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Center"
+                        x:Name="DataPagamentoPicker" IsEnabled="false"
+                        
+                        materialDesign:HintAssist.Hint="Data pagamento" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <DatePicker.SelectedDate>
+                    <Binding Path="DataPagamento" UpdateSourceTrigger="PropertyChanged"  Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <gpnuotomodel:NotEmptyDataValidationRule  ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>-->
+     
+
+
+
+            <ComboBox Grid.Row="1" Grid.Column="1" Margin="5,-5,0,0" materialDesign:HintAssist.Hint="Modalità pagamento" ItemsSource="{Binding ElencoModalitaPagamento}" VerticalAlignment="Center"  
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectedItem="{Binding ModalitaPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Key" DisplayMemberPath="Descrizione" HorizontalAlignment="Left">
+
+            </ComboBox>
+            <TextBox  Grid.Row="2" Grid.Column="0"  Width="100"   materialDesign:HintAssist.Hint="Totale pagamento" VerticalAlignment="Center" Margin="10,0,0,0"
+                  x:Name="TotalePagamentoTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="{Binding IDAnagraficaAttivita,Mode=TwoWay, Converter={StaticResource NzToTrue}}" HorizontalContentAlignment="Right" HorizontalAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="ImportoPagare" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="2" Grid.Column="1" Width="100" materialDesign:HintAssist.Hint="Sconto" VerticalAlignment="Center" Margin="0,0,5,0" HorizontalAlignment="Left"
+                  x:Name="ScontoTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Right">
+
+                <TextBox.Text>
+                    <Binding Path="Sconto" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="2" Grid.Column="2"   Width="100" materialDesign:HintAssist.Hint="Totale ricevuta" VerticalAlignment="Center" HorizontalContentAlignment="Right"
+                  x:Name="TotaleRicevutaTextbox"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" >
+
+                <TextBox.Text>
+                    <Binding Path="ImportoPagato" UpdateSourceTrigger="PropertyChanged"   Mode="TwoWay" StringFormat="C" ConverterCulture="it-IT">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Seleziona movimento" ItemsSource="{Binding ElencoAltriMovimenti}" VerticalAlignment="Top"  Margin="5,0,0,0" Visibility="{Binding IDAnagraficaAttivita,Converter={StaticResource NzToVisibility},ConverterParameter=true}"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectedItem="{Binding MovimentoSelezionato, Mode=TwoWay}" SelectedValuePath="Codice" DisplayMemberPath="Descrizione">
+
+            </ComboBox>
+        </Grid>
+        <report:StpRicevuta x:Name="Ricevuta" Grid.Row="0" Grid.Column="1" Visibility="{Binding Visibility, ElementName=btnStampaRicevuta}"/>
+        <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal"  >
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" x:Name="btnStampaRicevutaFiscale"
+                            Visibility="{Binding IsRicevutaFiscaleStampabile, Converter={StaticResource BoolToVis}}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Stampa ricevuta fiscale"  Click="btnStampaRicevutaFiscale_Click">
+
+                <materialDesign:PackIcon Kind="CurrencyEur" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" x:Name="btnStampaRicevuta"
+                            Visibility="{Binding ID, Converter={StaticResource NzToVisibility}}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Stampa ricevuta" Command="{Binding StampaRicevuta, Mode=OneWay}">
+
+                <materialDesign:PackIcon Kind="Printer" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                            Margin="0 0 5 5"
+                            x:Name="btnConfermaPagamento"
+                            Visibility="{Binding ID, Converter={StaticResource NzToVisibility}, ConverterParameter=true}"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Salva pagamento" Click="btnConfermaPagamento_Click">
+
+                <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                            Margin="0 0 5 5"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            ToolTip="Esci da pagamento" Command="{Binding AnnullaPagamento, Mode=OneWay}">
+
+                <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+            </Button>
+        </StackPanel>
+        
+
+
+
+
+    </Grid>
+</UserControl>

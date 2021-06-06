@@ -1,0 +1,143 @@
+﻿<Window x:Class="GPNuoto.ProgettazioneStampe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Ricevuta, Source={StaticResource Locator}}">
+
+    <Grid>
+        <FlowDocumentPageViewer Margin="10,10,10,10">
+            <FlowDocument PageHeight="14.8cm" PageWidth="21cm" PagePadding="0.5cm,0,0.5cm,0" Background="AliceBlue" FontFamily="Calibri" FontSize="14" ColumnWidth="999999">
+                <Table BorderThickness="0" BorderBrush="Purple">
+                    <Table.Columns>
+                        <TableColumn Width="15cm" />
+                        <TableColumn Width="4cm" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell TextAlignment="Left">
+                                <BlockUIContainer>
+                                    <Image Source="Report/logoxricevute.png" Width="8cm" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0"/>
+                                </BlockUIContainer>
+                                <Section Margin="10,0,0,0">
+                                    <Paragraph>
+                                        P.I. 02570240271
+                                        <LineBreak/>
+                                        Via G. Di Vittorio 15, 30034 Mira (VE)
+                                        <LineBreak/>
+                                        Tel. 041 422019
+                                        <LineBreak/>
+                                        segreteria@gpnuotomira.it
+                                    </Paragraph>
+                                </Section>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph Margin="0,1cm,0,0">
+                                    <Run xml:space="preserve">Ricevuta n. </Run>
+                                    <Run Text="{Binding NumeroRicevuta}"/>
+                                    <Run Text="/"/>
+                                    <Run Text="{Binding  Pagamento.DataPagamento, StringFormat='{}{0:yyyy}', ConverterCulture=it-IT}"/>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run xml:space="preserve">Data:</Run>
+                                    <Run Text="{Binding  Pagamento.DataPagamento, StringFormat='{}{0:dd/MM/yyyy}', ConverterCulture=it-IT}"/>
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Table BorderThickness="0" BorderBrush="Black">
+                    <Table.Columns>
+                        <TableColumn Width="7cm" />
+                        <TableColumn Width="12.8cm" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <Table>
+                                    <Table.Columns>
+                                        <TableColumn Width="3cm" />
+                                        <TableColumn Width="10cm" />
+                                    </Table.Columns>
+                                    <TableRowGroup>
+                                        <TableRow>
+                                            <TableCell>
+                                            <Paragraph>
+                                                RICEVUTO DA:
+                                            </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                            <Paragraph>
+                                                    <Run Text="{Binding Anagrafica.Cognome, Mode=OneWay}"/>
+                                                    <Run xml:space="preserve"   Text="{Binding Anagrafica.Nome, Mode=OneWay}"/>
+                                                <LineBreak/>
+                                                <Run Text="{Binding Anagrafica.Indirizzo, Mode=OneWay}"/>
+                                                <Run Text="-"/>
+                                                <Run Text="{Binding Anagrafica.CAP, Mode=OneWay}"/>
+                                                <Run Text="{Binding ComuneResidenza, Mode=OneWay}"/>
+                                                <LineBreak/>
+                                                <Run Text="C.F."/>
+                                                <Run Text="{Binding Anagrafica.CodiceFiscale, Mode=OneWay}"/>
+                                            </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                    <TableRowGroup>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph>
+                                                    LA SOMMA DI:
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph FontWeight="Bold">
+                                                    <Run Text="{Binding Pagamento.ImportoPagato,  StringFormat='C',  ConverterCulture='it-IT', Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell ColumnSpan="2">
+                                                <Paragraph Margin="0,10,0,0" >
+                                                    <InlineUIContainer>
+
+                                                        <TextBlock Text="{Binding Pagamento.Descrizione}" TextWrapping="Wrap"/>
+                                                    </InlineUIContainer>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Paragraph Margin="0,10,0,0">
+                                                   PAGAMENTO:
+                                                </Paragraph>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Paragraph Margin="0,10,0,0">
+                                                    <Run Text="{Binding Pagamento.ModalitaPagamento.Descrizione,Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell></TableCell>
+                                            <TableCell TextAlignment="Center">
+                                                <Paragraph>
+                                                    <Run>FIRMA</Run>
+                                                    <LineBreak/>
+                                                    <Run Text="{Binding Pagamento.User,Mode=OneWay}"/>
+                                                </Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+    </Grid>
+</Window>
+

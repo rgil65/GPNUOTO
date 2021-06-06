@@ -1,0 +1,64 @@
+idCorsi;idTipoAttivita;idCorsoTemplate;NomeCorso;DataInizio;DataFine;Note;DurataLezioneMin;OraInizio;OraFine;CostoNettoLezione;CostoIvaLezione;CostoLordoLezione;IsAttivo
+1;1;1;Scuola nuoto adulti - Mar/Ven - 08:45;NULL;NULL;;45;08:45:00;09:30:00;NULL;NULL;NULL;S
+2;1;1;Scuola nuoto adulti - Mar/Ven - 09:30;NULL;NULL;;45;09:30:00;10:15:00;NULL;NULL;NULL;S
+3;1;1;Scuola nuoto adulti - Mar/Ven - 19:00;NULL;NULL;;45;19:00:00;19:45:00;NULL;NULL;NULL;S
+4;1;1;Scuola nuoto adulti - Mar/Ven - 19:45;NULL;NULL;;45;19:45:00;20:30:00;NULL;NULL;NULL;S
+5;1;1;Scuola nuoto adulti - Mar/Ven - 20:30;NULL;NULL;;45;20:30:00;21:15:00;NULL;NULL;NULL;S
+6;1;2;Scuola nuoto adulti - Lun/Gio - 19:00;NULL;NULL;;45;19:00:00;19:45:00;NULL;NULL;NULL;S
+7;1;2;Scuola nuoto adulti - Lun/Gio - 19:45;NULL;NULL;;45;19:45:00;20:30:00;NULL;NULL;NULL;S
+8;1;2;Scuola nuoto adulti - Lun/Gio - 20:30;NULL;NULL;;45;20:30:00;21:15:00;NULL;NULL;NULL;S
+9;1;2;Scuola nuoto adulti - Lun/Gio - 21:15;NULL;NULL;;45;21:15:00;22:00:00;NULL;NULL;NULL;S
+10;2;1;Scuola nuoto ragazzi - Mar/Ven - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+11;2;1;Scuola nuoto ragazzi - Mar/Ven - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+12;2;1;Scuola nuoto ragazzi - Mar/Ven -18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+13;2;2;Scuola nuoto ragazzi - Lun/Gio - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+14;2;2;Scuola nuoto ragazzi - Lun/Gio - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+15;2;2;Scuola nuoto ragazzi - Lun/Gio - 18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+16;2;4;Scuola nuoto ragazzi - Mer/Sab - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+17;2;4;Scuola nuoto ragazzi - Mer/Sab - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+18;2;7;Scuola nuoto ragazzi - Mer - 18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+19;3;1;Scuola nuoto baby - Mar/Ven - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+20;3;1;Scuola nuoto baby - Mar/Ven - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+21;3;1;Scuola nuoto baby - Mar/Ven -18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+22;3;2;Scuola nuoto baby - Lun/Gio - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+23;3;2;Scuola nuoto baby - Lun/Gio - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+24;3;4;Scuola nuoto baby - Mer/Sab - 16:45;NULL;NULL;;45;16:45:00;17:30:00;NULL;NULL;NULL;S
+25;3;4;Scuola nuoto baby - Mer/Sab - 17:30;NULL;NULL;;45;17:30:00;18:15:00;NULL;NULL;NULL;S
+26;3;7;Scuola nuoto baby - Mer - 18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+27;5;1;Acquagym - Mar/Ven - 08:45;NULL;NULL;non partito;45;08:45:00;09:30:00;NULL;NULL;NULL;S
+28;5;1;Acquagym - Mar/Ven - 09:30;NULL;NULL;;45;09:30:00;10:15:00;NULL;NULL;NULL;S
+29;5;1;Acquagym - Mar/Ven - 10:15;NULL;NULL;;45;10:15:00;11:00:00;NULL;NULL;NULL;S
+30;5;1;Acquagym - Mar/Ven -18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+31;5;1;Acquagym - Mar/Ven - 19:00;NULL;NULL;;45;19:00:00;19:45:00;NULL;NULL;NULL;S
+32;5;1;Acquagym - Mar/Ven - 19:45;NULL;NULL;non partito;45;19:45:00;20:30:00;NULL;NULL;NULL;S
+33;5;1;Acquagym - Mar/Ven -20:30;NULL;NULL;non partito;45;20:30:00;21:15:00;NULL;NULL;NULL;S
+34;5;2;Acquagym - Lun/Gio - 13:30;NULL;NULL;;45;13:30:00;14:15:00;NULL;NULL;NULL;S
+35;5;2;Acquagym - Lun/Gio - 18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+36;5;2;Acquagym - Lun/Gio - 19:00;NULL;NULL;;45;19:00:00;19:45:00;NULL;NULL;NULL;S
+37;5;2;Acquagym - Lun/Gio - 19:45;NULL;NULL;non partito;45;19:45:00;20:30:00;NULL;NULL;NULL;S
+38;5;2;Acquagym - Lun/Gio - 20:30;NULL;NULL;non partito;45;20:30:00;21:15:00;NULL;NULL;NULL;S
+39;5;10;Acquagym - Sab - 11:15;NULL;NULL;;45;11:15:00;12:00:00;NULL;NULL;NULL;S
+40;6;7;AcquaJump - Mer - 18:15;NULL;NULL;;45;18:15:00;19:00:00;NULL;NULL;NULL;S
+41;9;2;Gestanti - Lun/Gio - 08:30;NULL;NULL;;45;08:30:00;09:15:00;NULL;NULL;NULL;S
+42;10;12;Stimolazione 3-12 mesi - Sab - 09:00;NULL;NULL;;30;09:00:00;09:30:00;NULL;NULL;NULL;S
+43;10;12;Stimolazione 12-24 mesi - Sab - 09:30;NULL;NULL;;30;09:30:00;10:00:00;NULL;NULL;NULL;S
+44;10;12;Pre-Baby 24-36 mesi - Sab - 10:00;NULL;NULL;;30;10:00:00;10:30:00;NULL;NULL;NULL;S
+45;10;10;Baby/Ragazzi - Sab - 10:30;NULL;NULL;;45;10:30:00;11:15:00;NULL;NULL;NULL;S
+46;10;10;Baby/Ragazzi - Sab - 11:15;NULL;NULL;;45;11:15:00;12:00:00;NULL;NULL;NULL;S
+47;4;13;Nuoto Libero - Lunedì - 13:15;NULL;NULL;;60;13:15:00;14:15:00;NULL;NULL;NULL;S
+47;4;14;Nuoto Libero - Martedì - 13:15;NULL;NULL;;60;13:15:00;14:15:00;NULL;NULL;NULL;S
+48;4;14;Nuoto Libero - Martedì - 21:30;NULL;NULL;non partito;60;21:30:00;22:30:00;NULL;NULL;NULL;S
+47;4;15;Nuoto Libero - Mercoledì - 08:30;NULL;NULL;non partito;60;08:30:00;09:30:00;NULL;NULL;NULL;S
+48;4;15;Nuoto Libero - Mercoledì - 19:00;NULL;NULL;;60;19:00:00;20:00:00;NULL;NULL;NULL;S
+48;4;15;Nuoto Libero - Mercoledì - 20:00;NULL;NULL;non partito;60;20:00:00;21:00:00;NULL;NULL;NULL;S
+48;4;15;Nuoto Libero - Mercoledì - 21:00;NULL;NULL;non partito;60;21:00:00;22:00:00;NULL;NULL;NULL;S
+47;4;16;Nuoto Libero - Giovedì - 13:15;NULL;NULL;;60;13:15:00;14:15:00;NULL;NULL;NULL;S
+47;4;17;Nuoto Libero - Venerdì - 13:15;NULL;NULL;;60;13:15:00;14:15:00;NULL;NULL;NULL;S
+48;4;17;Nuoto Libero - Venerdì - 21:30;NULL;NULL;non partito;60;21:30:00;22:30:00;NULL;NULL;NULL;S
+48;4;18;Nuoto Libero - Sabato - 19:00;NULL;NULL;;60;19:00:00;20:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 09:00;NULL;NULL;non partito;60;09:00:00;10:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 10:00;NULL;NULL;non partito;60;10:00:00;11:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 11:00;NULL;NULL;non partito;60;11:00:00;12:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 15:00;NULL;NULL;;60;15:00:00;16:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 16:00;NULL;NULL;;60;16:00:00;17:00:00;NULL;NULL;NULL;S
+48;4;19;Nuoto Libero - Domenica - 17:00;NULL;NULL;non partito;60;17:00:00;18:00:00;NULL;NULL;NULL;S

@@ -1,0 +1,12 @@
+SET SQL_SAFE_UPDATES = 0;
+
+
+CREATE TABLE `mysqldbschema`.`logtable` (
+  `idLogTable` INT NOT NULL AUTO_INCREMENT,
+  `Data` DATETIME NOT NULL,
+  `Sezione` VARCHAR(45) NULL,
+  `Log` VARCHAR(255) NULL,
+  PRIMARY KEY (`idLogTable`));
+
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='2.1' WHERE `Versione`='2.0';
