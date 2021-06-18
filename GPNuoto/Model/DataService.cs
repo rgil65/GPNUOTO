@@ -1449,7 +1449,7 @@ namespace GPNuoto.Model
         {
             foreach (SingoloTrasferimentoViewModel stvm in estvm.Elementi)
             {
-                using (DBInsertUpdate dtu = DBService.GetDBInsertUpdate("insert into trasferimentomovimenti(DataTraferimento,DataMovimenti,ModalitaPagamento,CCMovimento,Totale,Trasferito,Nota) values(now(),@DataMovimenti,@ModalitaPagamento,@CCMovimento,@Totale,@Trasferito,@Nota)"))
+                using (DBInsertUpdate dtu = DBService.GetDBInsertUpdate("insert into trasferimentomovimenti(DataTrasferimento,DataMovimenti,ModalitaPagamento,CCMovimento,Totale,Trasferito,Nota) values(now(),@DataMovimenti,@ModalitaPagamento,@CCMovimento,@Totale,@Trasferito,@Nota)"))
                 {
 
                     dtu.SetValue("DataMovimenti", stvm.DataMovimenti);
