@@ -1,0 +1,5 @@
+SET SQL_SAFE_UPDATES = 0;
+
+DROP TABLE `mysqldbschema`.`tipomovimento`;
+
+UPDATE `mysqldbschema`.`versionedb` SET `Versione`='1.5' WHERE `Versione`='1.5';

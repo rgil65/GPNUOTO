@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GPNuoto",
+    "\\GPNuoto\\View",
+    "\\GPNuoto\\View\\Riepiloghi"
   ],
   "SelectedNode": "\\GPNuoto.sln",
   "PreviewInSolutionExplorer": false

@@ -1755,11 +1755,22 @@ namespace GPNuoto.Model
 
         }
 
+        public int GetNumeroIscrizioniAttive(int idAttivita)
+        {
+            int Count = 0;
+            using (QueryReader dtm = DBService.GetReader("select distinct anagraficaattivita.idAnagraficaAttivita from  anagraficaattivita inner join anagraficaattivitadate on anagraficaattivitadate.idanagraficaattivita = anagraficaattivita.idanagraficaattivita   where idattivita = "+idAttivita.ToString()+" and Presente = 0 and Attivo = 1 group by anagraficaattivita.idanagraficaattivita"))
+            {
+                while (dtm.dr.Read())
+                    Count++;
+            }
+            return Count;
+        }
+
         public List<AnagraficaROViewModel> GetElencoIscritti(int idAttivita)
         {
             List<AnagraficaROViewModel> lista = new List<AnagraficaROViewModel>();
             
-            using (QueryReader dtm = DBService.GetReader("select   (movimenti.Totale-movimenti.Sconto-movimenti.ImportoPagato) as T,anagrafica.* from anagraficaattivita  inner join  anagrafica  on anagraficaattivita.idAnagrafica=anagrafica.IDAnagrafica left join movimenti on anagraficaattivita.idAnagraficaAttivita = movimenti.idAnagraficaAttivita    where idAttivita=" + idAttivita.ToString()))
+            using (QueryReader dtm = DBService.GetReader("select distinct  (movimenti.Totale-movimenti.Sconto-movimenti.ImportoPagato) as T,anagrafica.* from anagraficaattivita  inner join anagraficaattivitadate on anagraficaattivitadate.idanagraficaattivita = anagraficaattivita.idanagraficaattivita  inner join  anagrafica  on anagraficaattivita.idAnagrafica=anagrafica.IDAnagrafica left join movimenti on anagraficaattivita.idAnagraficaAttivita = movimenti.idAnagraficaAttivita    where Presente = 0 and Attivo = 1 and idAttivita=" + idAttivita.ToString()))
             {
                 while (dtm.dr.Read())
                 {
@@ -2060,6 +2071,7 @@ namespace GPNuoto.Model
                         ravm.Titolo = dtm.dr["Titolo"].ToString();
                         ravm.DataInizio = DbServiceMySql.DB2DT(dtm.dr["DataInizio"]);
                         ravm.NumeroIscritti = GetNumeroIscrizioni(ravm.ID);
+                        ravm.NumeroIscrittiAttivi = GetNumeroIscrizioniAttive(ravm.ID);
                         lista.Add(ravm);
                     }
                 }

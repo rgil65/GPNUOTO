@@ -69,6 +69,17 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </materialDesign:MaterialDataGridTextColumn>
+                        <materialDesign:MaterialDataGridTextColumn Width="60" Binding="{Binding NumeroIscrittiAttivi}" HeaderStyle="{StaticResource HeaderStyleGridView}"  Header="Tot.Attivi">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.Background" Value="{Binding BackColorAttivita}"/>
+                                    <Setter Property="TextBlock.Foreground" Value="{Binding ForeColorAttivita}"/>
+                                    <Setter Property="TextBlock.TextWrapping" Value="NoWrap" />
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                    <Setter Property="TextBlock.Margin" Value="5,0,10,0" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </materialDesign:MaterialDataGridTextColumn>
                         <materialDesign:MaterialDataGridTextColumn Width="80" Binding="{Binding DataInizio, Converter={StaticResource dateToString}}" HeaderStyle="{StaticResource HeaderStyleGridView}"  Header="Inizio"/>
                         <materialDesign:MaterialDataGridTextColumn Width="*" materialDesign:DataGridAssist.CellPadding="5,0,0,0" Binding="{Binding Titolo}" Header="Descrizione" HeaderStyle="{StaticResource HeaderStyleGridView}">
                             <DataGridTextColumn.ElementStyle>

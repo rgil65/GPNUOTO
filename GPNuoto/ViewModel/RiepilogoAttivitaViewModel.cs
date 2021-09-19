@@ -109,6 +109,35 @@ namespace GPNuoto.ViewModel
         }
 
         /// <summary>
+        /// The <see cref="NumeroIscrittiAttivi" /> property's name.
+        /// </summary>
+        public const string NumeroIscrittiAttiviPropertyName = "NumeroIscrittiAttivi";
+
+        private int _numeroIscrittiAttivi = 0;
+
+        /// <summary>
+        /// Sets and gets the NumeroIscrittiAttivi property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public int NumeroIscrittiAttivi
+        {
+            get
+            {
+                return _numeroIscrittiAttivi;
+            }
+
+            set
+            {
+                if (_numeroIscrittiAttivi == value)
+                {
+                    return;
+                }
+
+                _numeroIscrittiAttivi = value;
+                RaisePropertyChanged(NumeroIscrittiAttiviPropertyName);
+            }
+        }
+        /// <summary>
         /// The <see cref="Titolo" /> property's name.
         /// </summary>
         public const string TitoloPropertyName = "Titolo";
